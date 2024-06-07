@@ -33,20 +33,6 @@ import {
 export default function Home() {
   return (
     <div className="flex flex-col w-full items-center fancy-overlay">
-      <LandingSocialProofBand invert={false} className="hidden md:flex">
-        <LandingSocialProofBandItem>
-          Fast, reliable, and secure
-        </LandingSocialProofBandItem>
-
-        <LandingSocialProofBandItem>
-          Easy to use, easy to love
-        </LandingSocialProofBandItem>
-
-        <LandingSocialProofBandItem graphic="rating">
-          99% customer satisfaction
-        </LandingSocialProofBandItem>
-      </LandingSocialProofBand>
-
       <Header className="mb-0 lg:mb-0" />
 
       <LandingPrimaryImageCtaSection
@@ -55,7 +41,6 @@ export default function Home() {
         imageSrc="/static/images/product-sample.webp"
         withBackground
         withBackgroundGlow
-        leadingComponent={<LandingProductHuntAward />}
       >
         <Button size="xl" asChild>
           <a href="/jetzt-kaufen">Jetzt kaufen!</a>
@@ -64,11 +49,6 @@ export default function Home() {
         <Button size="xl" asChild variant="outlinePrimary">
           <a href="/termine">Zu den Terminen</a>
         </Button>
-
-        <LandingDiscount
-          discountValueText="30% off"
-          discountDescriptionText="for the first 10 customers (2 left)"
-        />
 
         <LandingSocialProof
           className="w-full mt-12"
@@ -200,31 +180,6 @@ export default function Home() {
         imagePosition="left"
         imagePerspective="none"
         variant="secondary"
-      />
-
-      <LandingBandSection
-        title="4.9/5 stars"
-        description="Our customers love our product."
-        supportingComponent={
-          <LandingSocialProof
-            showRating
-            numberOfUsers={99}
-            avatarItems={[
-              {
-                imageSrc: 'https://picsum.photos/id/64/100/100',
-                name: 'John Doe',
-              },
-              {
-                imageSrc: 'https://picsum.photos/id/65/100/100',
-                name: 'Jane Doe',
-              },
-              {
-                imageSrc: 'https://picsum.photos/id/669/100/100',
-                name: 'Alice Doe',
-              },
-            ]}
-          />
-        }
       />
 
       <LandingProductFeature
@@ -389,12 +344,6 @@ export default function Home() {
       <section className="wide-container mt-12">
         <LatestArticles />
       </section>
-
-      <div className="w-full flex flex-col items-center gap-8 md:gap-16">
-        <section className="ultrawide-container">
-          <ComponentDemo />
-        </section>
-      </div>
     </div>
   );
 }
