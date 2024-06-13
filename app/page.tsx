@@ -14,66 +14,66 @@ import {
 } from '@/components/shared/ui/table';
 
 import LatestArticles from '@/components/blog/LatestArticles';
+import React from 'react';
 
 const animals = [
   {
     type: 'Rotwild',
-    class: [
-      'Kaelber\n\n',
-      'Schmalspießer\n\n',
-      'Schmaltiere\n\n',
-      'Alttiere und Hirsche\n\n',
+    details: [
+      {
+        class: 'Kaelber',
+        nationwide: '01.08. - 28.02',
+        hesse: '01.08.-31.01',
+        notes: '---',
+      },
+      {
+        class: 'Schmalspiesser',
+        nationwide: '01.06. - 28.02',
+        hesse: '01.04.-31.05, 01.08.-31.01',
+        notes: '---',
+      },
+      {
+        class: 'Schmaltiere',
+        nationwide: '01.06. - 31.01',
+        hesse: '01.04.-31.05, 01.08.-31.01',
+        notes: '---',
+      },
+      {
+        class: 'Alttiere u. Hirsche',
+        nationwide: '01.08. - 31.01',
+        hesse: '---',
+        notes: '---',
+      },
     ],
-    nationwide: [
-      '01.08.- 28.02.',
-      '01.06.- 28.02.\n\n',
-      '01.06.- 31.01.\n\n',
-      '01.08.- 31.01.\n\n',
+  },
+  {
+    type: 'Dam- / Sikkawild',
+    details: [
+      {
+        class: 'Kaelber',
+        nationwide: '01.08. - 28.02',
+        hesse: '01.08.-31.01',
+        notes: '---',
+      },
+      {
+        class: 'Schmalspiesser',
+        nationwide: '01.06. - 28.02',
+        hesse: '01.04.-31.05, 01.08.-31.01',
+        notes: '---',
+      },
+      {
+        class: 'Schmaltiere',
+        nationwide: '01.06. - 31.01',
+        hesse: '01.04.-31.05, 01.08.-31.01',
+        notes: '---',
+      },
+      {
+        class: 'Alttiere u. Hirsche',
+        nationwide: '01.08. - 31.01',
+        hesse: '---',
+        notes: '---',
+      },
     ],
-    hesse: [
-      '01.08.- 31.01.\n\n',
-      '01.04.- 31.05 & 01.08.-31.01\n\n',
-      '01.04.- 31.05 & 01.08.-31.01\n\n',
-      '---\n\n',
-    ],
-    notes: 'tbd',
-  },
-  {
-    type: 'Dam- / Sikawild',
-    class: 'tbd',
-    nationwide: 'tbd',
-    hesse: 'tbd',
-    notes: 'tbd',
-  },
-  {
-    type: 'Rehwild',
-    class: 'tbd',
-    nationwide: 'tbd',
-    paymentMethod: 'tbd',
-  },
-  {
-    type: 'Gamswild',
-    class: 'tbd',
-    nationwide: 'tbd',
-    paymentMethod: 'tbd',
-  },
-  {
-    type: 'Muffelwild',
-    class: 'tbd',
-    nationwide: 'tbd',
-    paymentMethod: 'tbd',
-  },
-  {
-    type: 'Schwarzwild',
-    class: 'tbd',
-    nationwide: 'tbd',
-    paymentMethod: 'tbd',
-  },
-  {
-    type: 'Feldhasen',
-    class: 'tbd',
-    nationwide: 'tbd',
-    paymentMethod: 'tbd',
   },
 ];
 
@@ -96,6 +96,7 @@ export default function Home() {
           <a href="/termine">Zu den Terminen</a>
         </Button>
       </LandingPrimaryImageCtaSection>
+
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -111,15 +112,18 @@ export default function Home() {
           {animals.map((animal) => (
             <TableRow key={animal.type}>
               <TableCell className="font-medium">{animal.type}</TableCell>
-              <TableCell>{animal.class}</TableCell>
-              <TableCell>{animal.nationwide}</TableCell>
-              <TableCell>{animal.hesse}</TableCell>
-              <TableCell>{animal.notes}</TableCell>
+              {animal.details.map((detail, index) => (
+                <TableRow key={index}>
+                  <TableCell>{detail.class}</TableCell>
+                  <TableCell>{detail.nationwide}</TableCell>
+                  <TableCell>{detail.hesse}</TableCell>
+                  <TableCell>{detail.notes}</TableCell>
+                </TableRow>
+              ))}
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      )
       <section className="wide-container mt-12">
         <LatestArticles />
       </section>
