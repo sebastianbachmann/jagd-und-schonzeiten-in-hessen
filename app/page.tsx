@@ -75,6 +75,35 @@ const animals = [
       },
     ],
   },
+  {
+    type: 'Rehwild',
+    details: [
+      {
+        class: 'Kitze',
+        nationwide: '01.09. - 28.02',
+        hesse: '01.09.-31.01',
+        notes: '---',
+      },
+      {
+        class: 'Schmalrehe',
+        nationwide: '01.05. - 31.01',
+        hesse: '01.04. - 31.01',
+        notes: '---',
+      },
+      {
+        class: 'Ricken',
+        nationwide: '01.09. - 31.01',
+        hesse: '---',
+        notes: '---',
+      },
+      {
+        class: 'Böcke',
+        nationwide: '01.05. - 15.10',
+        hesse: '01.04. - 31.01',
+        notes: '---',
+      },
+    ],
+  },
 ];
 
 export default function Home() {
@@ -91,14 +120,12 @@ export default function Home() {
         <Button size="xl" asChild>
           <a href="/jetzt-kaufen">Jetzt kaufen!</a>
         </Button>
-
         <Button size="xl" asChild variant="outlinePrimary">
           <a href="/termine">Zu den Terminen</a>
         </Button>
       </LandingPrimaryImageCtaSection>
-
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>Liste der Wildarten und Jagdzeiten</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Wildart</TableHead>
@@ -110,17 +137,21 @@ export default function Home() {
         </TableHeader>
         <TableBody>
           {animals.map((animal) => (
-            <TableRow key={animal.type}>
-              <TableCell className="font-medium">{animal.type}</TableCell>
+            <React.Fragment key={animal.type}>
               {animal.details.map((detail, index) => (
                 <TableRow key={index}>
+                  {index === 0 && (
+                    <TableCell rowSpan={animal.details.length}>
+                      {animal.type}
+                    </TableCell>
+                  )}
                   <TableCell>{detail.class}</TableCell>
                   <TableCell>{detail.nationwide}</TableCell>
                   <TableCell>{detail.hesse}</TableCell>
                   <TableCell>{detail.notes}</TableCell>
                 </TableRow>
               ))}
-            </TableRow>
+            </React.Fragment>
           ))}
         </TableBody>
       </Table>
