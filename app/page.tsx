@@ -124,7 +124,7 @@ export default function Home() {
           <a href="/termine">Zu den Terminen</a>
         </Button>
       </LandingPrimaryImageCtaSection>
-      <Table>
+      <Table className="wide-container ml-10 mr-10">
         <TableCaption>Liste der Wildarten und Jagdzeiten</TableCaption>
         <TableHeader>
           <TableRow>
