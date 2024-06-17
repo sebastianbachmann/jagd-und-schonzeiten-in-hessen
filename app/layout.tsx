@@ -10,6 +10,8 @@ import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 const displayFont = Roboto_Serif({
   subsets: ['latin'],
   display: 'swap',
@@ -138,6 +140,7 @@ export default function RootLayout({
             <SearchProvider>
               <main className="w-full flex flex-col items-center mb-auto">
                 {children}
+                <SpeedInsights />
               </main>
             </SearchProvider>
           </div>
